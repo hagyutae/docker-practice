@@ -1,5 +1,6 @@
 package com.sb02.dockerpractice;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -7,7 +8,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 @Repository
-public class ContactRepository {
+@Profile("dev")
+public class DevContactRepository implements ContactRepositoryInterface {
 
     private final Map<String, List<String>> contacts = new ConcurrentHashMap<>();
 

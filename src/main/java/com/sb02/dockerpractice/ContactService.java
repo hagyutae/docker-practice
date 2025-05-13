@@ -10,9 +10,9 @@ public class ContactService {
 
     private static final Logger log = LoggerFactory.getLogger(ContactService.class);
 
-    private final ContactRepository contactRepository;
+    private final ContactRepositoryInterface contactRepository;
 
-    public ContactService(ContactRepository contactRepository) {
+    public ContactService(ContactRepositoryInterface contactRepository) {
         this.contactRepository = contactRepository;
     }
 
