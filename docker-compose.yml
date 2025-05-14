@@ -12,6 +12,29 @@ services:
       - "5432:5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  contact-app:
+    image: gted221/contact-app:1.0
+    container_name: contact-app
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: contactdb
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    networks:
+      - app-network
 
 volumes:
   postgres-data:
+
+networks:
+  app-network:
+    driver: bridge
